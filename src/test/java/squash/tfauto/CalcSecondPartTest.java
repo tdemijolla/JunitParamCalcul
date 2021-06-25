@@ -14,7 +14,6 @@ public class CalcSecondPartTest {
     int res;
 
     @Test
-    @DisplayName("Substraction")
     public void sub() throws IOException {
 
         var1 = Integer.parseInt(ParameterServiceImpl.getInstance().getParameter("DS_VAR1"));
