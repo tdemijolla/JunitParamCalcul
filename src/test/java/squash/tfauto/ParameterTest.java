@@ -32,10 +32,4 @@ public class ParameterTest {
         label = ParameterService.INSTANCE.getParameter("TC_CUF_fake");
         Assertions.assertTrue(label.equals("Squash"), "Le label est incorrect.");
     }
-
-    @Test
-    public void displayWithDefaultValue() {
-        label = ParameterService.INSTANCE.getParameter("TC_CUF_fake_label", "Squash");
-        Assertions.assertTrue(label.equals("Squash"), "Le label est incorrect.");
-    }
 }
