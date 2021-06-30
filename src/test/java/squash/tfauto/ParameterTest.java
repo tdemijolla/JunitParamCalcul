@@ -14,7 +14,7 @@ public class ParameterTest {
     String label;
 
     @Test
-    public void sub() throws ParameterNotFoundException, ParameterNotFoundException {
+    public void sub() throws ParameterNotFoundException {
         var1 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR1"));
         var2 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR2"));
         res = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_RES"));
