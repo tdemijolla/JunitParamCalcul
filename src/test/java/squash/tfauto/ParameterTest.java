@@ -2,6 +2,7 @@ package squash.tfauto;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.opentestfactory.exception.ParameterNotFoundException;
 import org.opentestfactory.util.ParameterService;
 
 public class ParameterTest {
@@ -13,7 +14,7 @@ public class ParameterTest {
     String label;
 
     @Test
-    public void sub() {
+    public void sub() throws ParameterNotFoundException, ParameterNotFoundException {
         var1 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR1"));
         var2 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR2"));
         res = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_RES"));
@@ -21,7 +22,7 @@ public class ParameterTest {
     }
 
     @Test
-    public void display() {
+    public void display() throws ParameterNotFoundException {
         label = ParameterService.INSTANCE.getParameter("TC_CUF_label");
         Assertions.assertTrue(label.equals("Squash"), "Le label est incorrect.");
     }
