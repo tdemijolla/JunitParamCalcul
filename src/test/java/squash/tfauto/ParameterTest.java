@@ -3,7 +3,6 @@ package squash.tfauto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.opentestfactory.exception.ParameterException;
-import org.opentestfactory.exception.ParameterNotFoundException;
 import org.opentestfactory.util.ParameterService;
 
 public class ParameterTest {
