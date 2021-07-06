@@ -2,34 +2,36 @@ package squash.tfauto;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.opentestfactory.exception.ParameterException;
 import org.opentestfactory.exception.ParameterNotFoundException;
 import org.opentestfactory.util.ParameterService;
 
 public class ParameterTest {
 
-    int var1;
-    int var2;
-    int res;
-
-    String label;
 
     @Test
-    public void sub() throws ParameterNotFoundException {
-        var1 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR1"));
-        var2 = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_VAR2"));
-        res = Integer.parseInt(ParameterService.INSTANCE.getParameter("DS_RES"));
-        Assertions.assertTrue((var1-var2)==res, "Le résultat du calcul est incorrect.");
+    public void sub() throws ParameterException {
+        int var1 = ParameterService.INSTANCE.getInt("DS_VAR1");
+        int var2 = ParameterService.INSTANCE.getIntTestParam("DS_VAR2");
+        int res = ParameterService.INSTANCE.getIntGlobalParam("DS_RES");
+        Assertions.assertEquals(res, var1-var2, "Wrong calculation result");
+    }
+    @Test
+    public void add() {
+        float var1 = ParameterService.INSTANCE.getFloat("DS_FAKE_VAR1", 42.21f);
+        float var2 = ParameterService.INSTANCE.getFloatTestParam("DS_FAKE_VAR2", 15.23f);
+        float res = ParameterService.INSTANCE.getFloatGlobalParam("DS_RES",57.44f );
+        Assertions.assertEquals(res, var1+var2, "Wrong calculation result");
     }
 
     @Test
-    public void display() throws ParameterNotFoundException {
-        label = ParameterService.INSTANCE.getParameter("TC_CUF_label");
-        Assertions.assertTrue(label.equals("Squash"), "Le label est incorrect.");
+    public void displayLabel() throws ParameterException {
+        Boolean isDisplay = ParameterService.INSTANCE.getBoolean("DS_DISPLAY");
+        String label = "default";
+        if(isDisplay){
+            label = ParameterService.INSTANCE.getString("TC_CUF_label");
+        }
+        Assertions.assertEquals(label, "Squash", "Wrong calculation result");
     }
 
-    @Test
-    public void displayWithDefaultValue() {
-        label = ParameterService.INSTANCE.getParameter("TC_CUF_fake_label", "Squash");
-        Assertions.assertTrue(label.equals("Squash"), "Le label est incorrect.");
-    }
 }
