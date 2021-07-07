@@ -28,7 +28,7 @@ public class ParameterTest {
         Boolean isDisplay = ParameterService.INSTANCE.getBoolean("DS_DISPLAY");
         String label = "default";
         if(isDisplay){
-            label = ParameterService.INSTANCE.getString("TC_CUF_label");
+            label = ParameterService.INSTANCE.getString("TC_CUF_LABEL");
         }
         Assertions.assertEquals(label, "Squash", "Wrong calculation result");
     }
