@@ -19,7 +19,7 @@ public class ParameterTest {
     public void add() {
         float var1 = ParameterService.INSTANCE.getFloat("DS_FAKE_VAR1", 42.21f);
         float var2 = ParameterService.INSTANCE.getFloatTestParam("DS_FAKE_VAR2", 15.23f);
-        float res = ParameterService.INSTANCE.getFloatGlobalParam("DS_RES",57.44f );
+        float res = ParameterService.INSTANCE.getFloatGlobalParam("DS_FAKE_RES",57.44f );
         Assertions.assertEquals(res, var1+var2, "Wrong calculation result");
     }
 
